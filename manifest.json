@@ -1,0 +1,31 @@
+{
+  "id": "/Phone.pe/",
+  "name": "Fake Phone",
+  "short_name": "Fake Phone",
+  "description": "Fake Phone demo payment interface",
+  "start_url": "/Phone.pe/index.html",
+  "scope": "/Phone.pe/",
+  "display": "fullscreen",
+  "display_override": [
+    "fullscreen",
+    "standalone"
+  ],
+  "orientation": "portrait",
+  "background_color": "#f7b6ff",
+  "theme_color": "#8c20dc",
+  "lang": "en",
+  "icons": [
+    {
+      "src": "/Phone.pe/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/Phone.pe/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ]
+}
