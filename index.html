@@ -7,13 +7,12 @@
 content="width=device-width,initial-scale=1.0,
 maximum-scale=1.0,user-scalable=no,viewport-fit=cover">
 
-<title>Demo Phone Pay Simulator</title>
+<title>Payment Demo Simulator</title>
 
 <link rel="manifest" href="./manifest.json">
 <link rel="apple-touch-icon" href="./icon-192.png">
 
-<meta name="theme-color" content="#8c20dc">
-<meta name="mobile-web-app-capable" content="yes">
+<meta name="theme-color" content="#7b16db">
 
 <style>
 *{
@@ -25,297 +24,321 @@ maximum-scale=1.0,user-scalable=no,viewport-fit=cover">
 }
 
 body{
-  background:linear-gradient(135deg,#f7b6ff,#f5d7ff);
+  background:#f8f3f9;
+  color:#321642;
   min-height:100vh;
-  min-height:100dvh;
-  color:#35105d;
 }
 
 button{
+  font-family:inherit;
   cursor:pointer;
 }
 
 .page{
-  max-width:650px;
+  width:100%;
+  max-width:520px;
   margin:auto;
-  padding:15px;
+  min-height:100vh;
+  background:#fff;
 }
 
-.header{
+.hidden{
+  display:none!important;
+}
+
+/* DEMO LABEL */
+
+.demo{
+  background:#fff1f1;
+  color:#b00000;
+  border:1px solid #e04444;
+  padding:8px 12px;
   text-align:center;
-  padding:25px 10px 15px;
+  font-size:12px;
+  font-weight:bold;
 }
 
-.header h1{
-  color:#fff;
-  font-size:34px;
-  text-shadow:0 2px 5px #9b35c9;
+/* HOME */
+
+.homeTop{
+  padding:25px 18px 15px;
+  background:linear-gradient(135deg,#f7b6ff,#eed4ff);
 }
 
-.header p{
-  color:#6e278f;
+.homeTop h1{
+  font-size:28px;
+  color:#5c1686;
+}
+
+.homeTop p{
   margin-top:5px;
+  color:#72547d;
 }
 
-.demoBanner{
-  background:#fff;
-  color:#9b111e;
-  border:2px solid #e33;
-  border-radius:12px;
-  padding:10px;
-  text-align:center;
-  font-weight:bold;
-  margin-bottom:15px;
-}
-
-.cards{
-  display:flex;
-  gap:12px;
-  justify-content:center;
-}
-
-.card{
-  width:50%;
-  background:#fff;
-  border:1px solid #dba8eb;
-  border-radius:15px;
-  padding:13px 8px;
-  text-align:center;
-  box-shadow:0 5px 15px rgba(100,0,130,.15);
-}
-
-.card h3{
-  font-size:15px;
-  line-height:20px;
-}
-
-.price{
-  background:linear-gradient(90deg,#7b16db,#b124e8);
-  color:white;
-  font-size:25px;
-  font-weight:bold;
-  margin:10px -8px;
-  padding:8px;
-  transform:skew(-8deg);
-}
-
-.features{
-  text-align:left;
-  font-size:11px;
-  line-height:22px;
-  padding:5px;
-}
-
-.buy{
-  border:0;
-  background:#8b20db;
-  color:white;
-  padding:9px 17px;
-  border-radius:20px;
-  font-weight:bold;
-}
-
-.bigButtons{
-  display:flex;
-  gap:12px;
-  margin-top:30px;
-}
-
-.bigbtn{
-  flex:1;
-  border:0;
-  padding:14px 5px;
-  border-radius:25px;
-  background:#8d20dc;
-  color:white;
-  font-weight:bold;
-}
-
-.screen{
-  display:none;
-}
-
-.box{
-  background:#fff7ff;
+.balance{
+  margin:15px 0;
+  background:white;
   border-radius:18px;
-  padding:20px 15px;
-  box-shadow:0 5px 20px rgba(80,0,100,.15);
+  padding:18px;
+  box-shadow:0 4px 16px #00000012;
 }
 
-.back{
-  background:none;
-  border:0;
-  font-size:18px;
-  color:#602080;
-  margin-bottom:15px;
+.balance small{
+  color:#777;
 }
 
-.top{
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  gap:10px;
-}
-
-.title{
-  font-size:20px;
-  font-weight:bold;
-}
-
-.amount{
-  text-align:right;
-}
-
-.amount small{
+.balance strong{
   display:block;
+  margin-top:5px;
+  font-size:28px;
+}
+
+.quick{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:8px;
+  padding:16px;
+}
+
+.quickItem{
+  text-align:center;
+  padding:10px 3px;
   font-size:12px;
 }
 
-.amount strong{
+.quickIcon{
+  width:50px;
+  height:50px;
+  border-radius:50%;
+  background:#f0dcff;
+  color:#7620b0;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  margin:auto auto 7px;
+  font-size:23px;
+}
+
+.section{
+  padding:10px 16px;
+}
+
+.section h3{
+  margin-bottom:12px;
+}
+
+.plans{
+  display:flex;
+  gap:12px;
+}
+
+.plan{
+  flex:1;
+  border:1px solid #e1cce9;
+  border-radius:16px;
+  padding:15px 10px;
+  text-align:center;
+  background:#fff;
+  box-shadow:0 3px 12px #0000000d;
+}
+
+.plan h3{
+  font-size:15px;
+  margin-bottom:10px;
+}
+
+.plan .price{
   font-size:27px;
+  font-weight:bold;
+  color:#7216a6;
+  margin-bottom:12px;
+}
+
+.plan button{
+  border:0;
+  background:#7b16db;
+  color:#fff;
+  padding:10px 15px;
+  border-radius:22px;
+  font-weight:bold;
+}
+
+/* PAYMENT QR */
+
+.screen{
+  min-height:100vh;
+  background:#fff7ff;
+}
+
+.nav{
+  height:58px;
+  display:flex;
+  align-items:center;
+  gap:12px;
+  padding:0 16px;
+  border-bottom:1px solid #eee;
+  font-size:20px;
+}
+
+.nav button{
+  border:0;
+  background:none;
+  font-size:25px;
+}
+
+.paymentHead{
+  padding:22px 18px 10px;
+}
+
+.paymentHead h2{
+  font-size:25px;
+  color:#4d1767;
+}
+
+.amount{
+  font-size:35px;
+  font-weight:bold;
+  color:#6e16a2;
+  margin-top:7px;
 }
 
 .order{
-  font-size:13px;
-  color:#633b76;
-  margin:15px 0;
+  font-size:12px;
+  color:#777;
+  margin-top:8px;
   word-break:break-all;
 }
 
-.qr{
-  width:260px;
-  height:260px;
-  display:block;
-  object-fit:contain;
-  background:white;
-  border:1px solid #ddd;
-  border-radius:12px;
-  padding:10px;
-  margin:15px auto;
-}
-
-.info{
+.qrBox{
+  margin:15px;
+  background:#fff;
+  border-radius:18px;
+  padding:18px;
   text-align:center;
-  color:#573568;
-  line-height:24px;
+  border:1px solid #ddd;
 }
 
-.actionBtns{
+.qrBox img{
+  width:270px;
+  height:270px;
+  max-width:100%;
+  object-fit:contain;
+}
+
+.qrText{
+  margin-top:12px;
+  color:#5c4265;
+  line-height:22px;
+}
+
+.actions{
   display:flex;
   gap:10px;
-  margin:20px 0;
+  padding:0 15px;
 }
 
-.actionBtns button{
+.actions button{
   flex:1;
-  padding:13px;
-  border-radius:10px;
-  border:1px solid #b9a3c1;
-  background:white;
-}
-
-.blue{
-  background:#2463e8 !important;
-  color:white;
-  border:0 !important;
-}
-
-input{
-  width:100%;
   padding:14px;
+  border-radius:12px;
+  border:1px solid #c9b4cf;
+  background:#fff;
+}
+
+.primary{
+  background:#2969e8!important;
+  color:#fff;
+  border:0!important;
+}
+
+.amountInput{
+  margin:18px 15px 0;
+}
+
+.amountInput input{
+  width:100%;
+  padding:15px;
   border:1px solid #bbb;
   border-radius:10px;
   font-size:18px;
-  margin:10px 0;
 }
 
-.payButton{
+/* MOCK UPI */
+
+.mockPay{
+  padding:18px;
+}
+
+.mockCard{
+  margin-top:12px;
+  background:white;
+  border-radius:18px;
+  padding:18px;
+  box-shadow:0 4px 18px #00000012;
+}
+
+.receiver{
+  display:flex;
+  align-items:center;
+  gap:12px;
+  padding-bottom:18px;
+  border-bottom:1px solid #eee;
+}
+
+.avatar{
+  width:48px;
+  height:48px;
+  border-radius:50%;
+  background:#7420a6;
+  color:#fff;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-weight:bold;
+}
+
+.receiver small{
+  display:block;
+  color:#888;
+  margin-top:3px;
+}
+
+.payAmount{
   width:100%;
-  margin-top:10px;
   padding:15px;
+  margin:18px 0;
+  border:1px solid #bbb;
+  border-radius:10px;
+  font-size:25px;
+  text-align:center;
+}
+
+.demoButton{
+  width:100%;
+  padding:16px;
   border:0;
   border-radius:25px;
-  background:#8b20db;
-  color:white;
-  font-size:17px;
+  background:#7114d1;
+  color:#fff;
   font-weight:bold;
+  font-size:16px;
 }
 
-.payOption{
-  border-top:1px solid #ddd;
-  padding:18px 8px;
-  font-size:17px;
-  cursor:pointer;
-  transition:.15s;
-}
+/* VERIFY */
 
-.payOption:active{
-  background:#f0d8ff;
-  transform:scale(.99);
-}
-
-.payOption span{
-  display:block;
-  color:#777;
-  font-size:13px;
-  margin-top:5px;
-}
-
-.historyItem{
-  background:white;
-  border-radius:12px;
-  padding:14px;
-  margin:10px 0;
-  box-shadow:0 3px 10px rgba(80,0,100,.1);
-}
-
-.success{
+.verify{
   text-align:center;
+  padding:80px 25px;
 }
 
-.check{
-  font-size:65px;
-  color:#16b84e;
-}
-
-.success h2{
-  margin:10px 0;
-}
-
-.successAmount{
-  font-size:30px;
-  font-weight:bold;
-  margin:15px;
-}
-
-.row{
-  display:flex;
-  justify-content:space-between;
-  gap:15px;
-  border-bottom:1px solid #ddd;
-  padding:10px 0;
-  text-align:left;
-  font-size:13px;
-}
-
-.watermark{
-  margin-top:20px;
-  padding:10px;
-  border:2px dashed #d33;
-  color:#b00000;
-  font-weight:bold;
-  text-align:center;
-  border-radius:10px;
-}
-
-.loading{
-  width:45px;
-  height:45px;
-  border:5px solid #ead7f3;
-  border-top:5px solid #8b20db;
+.spinner{
+  width:58px;
+  height:58px;
+  border:6px solid #eadbf0;
+  border-top-color:#7b16db;
   border-radius:50%;
-  margin:10px auto 20px;
   animation:spin 1s linear infinite;
+  margin:0 auto 25px;
 }
 
 @keyframes spin{
@@ -323,89 +346,252 @@ input{
     transform:rotate(360deg);
   }
 }
+
+.verify h2{
+  margin-bottom:10px;
+}
+
+/* SUCCESS */
+
+.success{
+  text-align:center;
+  padding:60px 20px;
+}
+
+.check{
+  width:80px;
+  height:80px;
+  border-radius:50%;
+  background:#18b957;
+  color:#fff;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  margin:auto;
+  font-size:50px;
+}
+
+.success h2{
+  margin-top:20px;
+}
+
+.successAmount{
+  font-size:34px;
+  font-weight:bold;
+  margin:18px 0;
+  color:#64168e;
+}
+
+.details{
+  background:#fff;
+  border-radius:15px;
+  margin-top:20px;
+  padding:15px;
+  text-align:left;
+}
+
+.detail{
+  display:flex;
+  justify-content:space-between;
+  gap:15px;
+  padding:12px 0;
+  border-bottom:1px solid #eee;
+  font-size:13px;
+}
+
+.detail:last-child{
+  border-bottom:0;
+}
+
+.done{
+  width:100%;
+  margin-top:20px;
+  padding:15px;
+  border:0;
+  border-radius:25px;
+  background:#7b16db;
+  color:white;
+  font-weight:bold;
+}
+
+/* HISTORY */
+
+.history{
+  padding:18px;
+}
+
+.history h2{
+  margin-bottom:15px;
+}
+
+.historyItem{
+  background:#fff;
+  border-radius:15px;
+  padding:15px;
+  margin-bottom:10px;
+  box-shadow:0 3px 12px #00000010;
+}
+
+.historyItem strong{
+  color:#64168e;
+}
+
+.historyItem small{
+  color:#777;
+}
+
+.bottom{
+  position:fixed;
+  bottom:0;
+  left:50%;
+  transform:translateX(-50%);
+  width:100%;
+  max-width:520px;
+  background:#fff;
+  border-top:1px solid #ddd;
+  display:flex;
+  justify-content:space-around;
+  padding:9px 5px;
+}
+
+.bottom button{
+  border:0;
+  background:none;
+  color:#777;
+  font-size:11px;
+}
+
+.bottom .scan{
+  width:52px;
+  height:52px;
+  margin-top:-25px;
+  border-radius:50%;
+  background:#7016cf;
+  color:white;
+  font-size:22px;
+}
 </style>
 </head>
 
 <body>
 
 <!-- HOME -->
-<div id="homePage" class="page">
 
-  <div class="header">
-    <h1>Demo Phone Pay</h1>
-    <p>Payment Simulator</p>
+<div id="home" class="page">
+
+  <div class="demo">
+    DEMO SIMULATOR — NO REAL MONEY
   </div>
 
-  <div class="demoBanner">
-    DEMO MODE — NO REAL MONEY IS TRANSFERRED
-  </div>
+  <div class="homeTop">
 
-  <div class="cards">
+    <h1>Payment Demo</h1>
+    <p>Simple payment simulator</p>
 
-    <div class="card">
-
-      <h3>
-        NORMAL BUY<br>
-        Demo Plan
-      </h3>
-
-      <div class="price">₹150</div>
-
-      <div class="features">
-        1. Double Bank ✓<br>
-        2. SMS Features ✓<br>
-        3. Demo History ✓<br>
-        4. Sound Box ✕
-      </div>
-
-      <button
-        class="buy"
-        onclick="openPayment(150)">
-        BUY NOW ›
-      </button>
-
-    </div>
-
-
-    <div class="card">
-
-      <h3>
-        SOUND BOX BUY<br>
-        Demo Plan
-      </h3>
-
-      <div class="price">₹299</div>
-
-      <div class="features">
-        1. Double Bank ✓<br>
-        2. SMS Features ✓<br>
-        3. Demo History ✓<br>
-        4. SOUND BOX ✓
-      </div>
-
-      <button
-        class="buy"
-        onclick="openPayment(299)">
-        BUY NOW ›
-      </button>
-
+    <div class="balance">
+      <small>Demo Balance</small>
+      <strong>₹0.00</strong>
     </div>
 
   </div>
 
 
-  <div class="bigButtons">
+  <div class="quick">
+
+    <div class="quickItem">
+      <div class="quickIcon">☎</div>
+      Mobile
+    </div>
+
+    <div class="quickItem">
+      <div class="quickIcon">🏦</div>
+      Bank
+    </div>
+
+    <div class="quickItem">
+      <div class="quickIcon">↓</div>
+      Receive
+    </div>
+
+    <div class="quickItem">
+      <div class="quickIcon">₹</div>
+      Balance
+    </div>
+
+  </div>
+
+
+  <div class="section">
+
+    <h3>Demo Payment Plans</h3>
+
+    <div class="plans">
+
+      <div class="plan">
+
+        <h3>Normal Demo</h3>
+
+        <div class="price">₹150</div>
+
+        <button onclick="openPayment(150)">
+          PAY
+        </button>
+
+      </div>
+
+
+      <div class="plan">
+
+        <h3>Sound Box Demo</h3>
+
+        <div class="price">₹199</div>
+
+        <button onclick="openPayment(199)">
+          PAY
+        </button>
+
+      </div>
+
+    </div>
+
+  </div>
+
+
+  <div class="section">
 
     <button
-      class="bigbtn"
+      class="done"
       onclick="showHistory()">
+
       PAYMENT HISTORY
+
+    </button>
+
+  </div>
+
+
+  <div class="bottom">
+
+    <button onclick="goHome()">
+      🏠<br>Home
+    </button>
+
+    <button>
+      🔎<br>Search
     </button>
 
     <button
-      class="bigbtn"
-      onclick="showHistory()">
-      DEMO HISTORY
+      class="scan"
+      onclick="openPayment(199)">
+      ▦
+    </button>
+
+    <button>
+      🔔<br>Alerts
+    </button>
+
+    <button onclick="showHistory()">
+      ◷<br>History
     </button>
 
   </div>
@@ -413,131 +599,120 @@ input{
 </div>
 
 
-<!-- PAYMENT PAGE -->
-<div id="paymentPage" class="page screen">
+<!-- QR PAYMENT -->
 
-  <div class="box">
+<div id="payment" class="page screen hidden">
 
-    <button
-      class="back"
-      onclick="goHome()">
-      ← Back
-    </button>
+  <div class="demo">
+    DEMO PAYMENT — NOT A REAL UPI TRANSACTION
+  </div>
+
+  <div class="nav">
+
+    <button onclick="goHome()">←</button>
+
+    <strong>Your Payment</strong>
+
+  </div>
 
 
-    <div class="top">
+  <div class="paymentHead">
 
-      <div class="title">
-        🛍️ YOUR DEMO PAYMENT
-      </div>
+    <h2>Amount to pay</h2>
 
-      <div class="amount">
-        <small>Demo amount</small>
-
-        <strong id="amount">
-          ₹299.00
-        </strong>
-      </div>
-
+    <div
+      class="amount"
+      id="amount">
+      ₹199.00
     </div>
-
 
     <div class="order">
-
       Demo Order ID:
-      <span id="orderId"></span>
-
+      <span id="order"></span>
     </div>
 
+  </div>
 
-    <div class="demoBanner">
-      DEMO QR — NOT A REAL PAYMENT QR
-    </div>
 
+  <div class="qrBox">
 
     <img
-      id="qrImage"
-      class="qr"
       src="./qr.png"
       alt="Demo QR">
 
+    <div class="qrText">
 
-    <div class="info">
-
-      This QR is for demonstration only.
-
-    </div>
-
-
-    <div class="actionBtns">
-
-      <button
-        class="blue"
-        onclick="downloadQR()">
-
-        ↓ Download QR
-
-      </button>
-
-
-      <button
-        onclick="shareQR()">
-
-        ↗ Share QR
-
-      </button>
+      Scan this QR with a UPI app
+      <br>
+      <b>DEMO ONLY — NO MONEY IS SENT</b>
 
     </div>
 
+  </div>
+
+
+  <div class="actions">
+
+    <button
+      class="primary"
+      onclick="downloadQR()">
+
+      ↓ Download QR
+
+    </button>
+
+    <button
+      onclick="shareQR()">
+
+      ↗ Share QR
+
+    </button>
+
+  </div>
+
+
+  <div class="amountInput">
 
     <input
       id="customAmount"
       type="number"
       min="1"
-      step="1"
       placeholder="Enter demo amount">
 
-
-    <button
-      class="payButton"
-      onclick="startDemoPayment()">
-
-      DEMO PAY
-
-    </button>
+  </div>
 
 
-    <!-- CLICKABLE UPI OPTIONS -->
+  <div class="mockPay">
 
     <div
-      class="payOption"
-      onclick="startDemoPayment()">
+      class="mockCard"
+      onclick="openMockUPI()">
 
-      📱 UPI App
+      <div class="receiver">
 
-      <span>
-        Open demo UPI payment
-      </span>
+        <div class="avatar">
+          DP
+        </div>
 
-    </div>
+        <div>
 
+          <b>Demo Payment Receiver</b>
 
-    <div
-      class="payOption"
-      onclick="startDemoPayment()">
+          <small>
+            demo@upi
+          </small>
 
-      💳 Other UPI App
+        </div>
 
-      <span>
-        Use demo payment application
-      </span>
+      </div>
 
-    </div>
+      <p style="margin-top:15px">
+        📱 UPI App
+      </p>
 
-
-    <div class="watermark">
-
-      DEMO / SIMULATION ONLY
+      <small style="color:#777">
+        Open demo payment screen
+      </small>
 
     </div>
 
@@ -546,112 +721,177 @@ input{
 </div>
 
 
-<!-- VERIFYING PAGE -->
-<div id="verifyPage" class="page screen">
+<!-- MOCK UPI SCREEN -->
 
-  <div class="box success">
+<div
+  id="mockUPI"
+  class="page screen hidden">
 
-    <div class="loading"></div>
+  <div class="demo">
+    DEMO UPI SCREEN — NO REAL PAYMENT
+  </div>
+
+  <div class="nav">
+
+    <button onclick="showPayment()">←</button>
+
+    <strong>Pay</strong>
+
+  </div>
+
+
+  <div class="mockPay">
+
+    <div class="mockCard">
+
+      <div class="receiver">
+
+        <div class="avatar">
+          DP
+        </div>
+
+        <div>
+
+          <b>Demo Receiver</b>
+
+          <small>
+            demo@upi
+          </small>
+
+        </div>
+
+      </div>
+
+
+      <input
+        id="mockAmount"
+        class="payAmount"
+        type="number"
+        min="1"
+        placeholder="₹199">
+
+
+      <button
+        class="demoButton"
+        onclick="verifyDemo()">
+
+        PROCEED WITH DEMO PAYMENT
+
+      </button>
+
+
+      <div class="demo"
+           style="margin-top:18px">
+
+        SIMULATION ONLY — NEVER ENTER YOUR UPI PIN
+
+      </div>
+
+    </div>
+
+  </div>
+
+</div>
+
+
+<!-- VERIFY -->
+
+<div
+  id="verify"
+  class="page screen hidden">
+
+  <div class="demo">
+    DEMO VERIFICATION
+  </div>
+
+  <div class="verify">
+
+    <div class="spinner"></div>
 
     <h2>
       Verifying Demo Payment...
     </h2>
 
-    <p style="margin-top:10px">
-
-      Simulating payment verification
-
+    <p style="margin-top:10px;color:#777">
+      Please wait
     </p>
-
-
-    <div class="watermark">
-
-      NO REAL PAYMENT IS BEING PROCESSED
-
-    </div>
 
   </div>
 
 </div>
 
 
-<!-- SUCCESS PAGE -->
-<div id="successPage" class="page screen">
+<!-- SUCCESS -->
 
-  <div class="box success">
+<div
+  id="success"
+  class="page screen hidden">
+
+  <div class="demo">
+    DEMO RESULT — NOT A REAL TRANSACTION
+  </div>
+
+  <div class="success">
 
     <div class="check">
       ✓
     </div>
 
-
     <h2>
       Demo Payment Successful
     </h2>
 
-
-    <p>
-      Simulation completed successfully
+    <p style="margin-top:8px;color:#777">
+      Simulation completed
     </p>
 
 
     <div
-      class="successAmount"
-      id="successAmount">
-
-      ₹299
-
+      id="successAmount"
+      class="successAmount">
+      ₹199.00
     </div>
 
 
-    <div class="row">
+    <div class="details">
 
-      <span>
-        Demo Order ID
-      </span>
+      <div class="detail">
 
-      <span id="successOrder">
-      </span>
+        <span>Order ID</span>
 
-    </div>
+        <b id="successOrder">
+        </b>
 
-
-    <div class="row">
-
-      <span>
-        Demo Transaction ID
-      </span>
-
-      <span id="txnId">
-      </span>
-
-    </div>
+      </div>
 
 
-    <div class="row">
+      <div class="detail">
 
-      <span>
-        Date & Time
-      </span>
+        <span>Demo Transaction</span>
 
-      <span id="dateTime">
-      </span>
+        <b id="txn">
+        </b>
 
-    </div>
+      </div>
 
 
-    <div class="watermark">
+      <div class="detail">
 
-      DEMO PAYMENT — NOT A REAL TRANSACTION
+        <span>Date & Time</span>
+
+        <b id="date">
+        </b>
+
+      </div>
 
     </div>
 
 
     <button
-      class="payButton"
+      class="done"
       onclick="goHome()">
 
-      Done
+      DONE
 
     </button>
 
@@ -660,31 +900,30 @@ input{
 </div>
 
 
-<!-- HISTORY PAGE -->
-<div id="historyPage" class="page screen">
+<!-- HISTORY -->
 
-  <div class="box">
+<div
+  id="history"
+  class="page screen hidden">
 
-    <button
-      class="back"
-      onclick="goHome()">
+  <div class="demo">
+    DEMO HISTORY — NO REAL TRANSACTIONS
+  </div>
 
-      ← Back
+  <div class="nav">
 
-    </button>
+    <button onclick="goHome()">←</button>
 
+    <strong>History</strong>
+
+  </div>
+
+
+  <div class="history">
 
     <h2>
       Demo Payment History
     </h2>
-
-
-    <div class="demoBanner">
-
-      DEMO HISTORY — NO REAL TRANSACTIONS
-
-    </div>
-
 
     <div id="historyList">
     </div>
@@ -696,181 +935,203 @@ input{
 
 <script>
 
-let selectedAmount = 299;
+let currentAmount = 199;
+let currentOrder = "";
 
 
-/* SHOW ONLY ONE PAGE */
+/* PAGE CONTROL */
 
 function hideAll(){
 
-  document.getElementById("homePage").style.display =
-    "none";
+  [
+    "home",
+    "payment",
+    "mockUPI",
+    "verify",
+    "success",
+    "history"
+  ].forEach(id => {
 
-  document.getElementById("paymentPage").style.display =
-    "none";
+    document
+      .getElementById(id)
+      .classList.add("hidden");
 
-  document.getElementById("verifyPage").style.display =
-    "none";
+  });
 
-  document.getElementById("successPage").style.display =
-    "none";
-
-  document.getElementById("historyPage").style.display =
-    "none";
 }
 
 
-/* OPEN PAYMENT */
-
-function openPayment(amount){
-
-  selectedAmount = amount;
+function show(id){
 
   hideAll();
 
-
-  document.getElementById("amount").innerText =
-    "₹" + amount.toFixed(2);
-
-
-  document.getElementById("customAmount").value =
-    amount;
-
-
-  document.getElementById("orderId").innerText =
-    "DEMO-" + Date.now();
-
-
-  document.getElementById("paymentPage").style.display =
-    "block";
-
+  document
+    .getElementById(id)
+    .classList.remove("hidden");
 
   window.scrollTo(0,0);
 
 }
 
 
-/* START DEMO PAYMENT */
+/* HOME */
 
-function startDemoPayment(){
+function goHome(){
 
-  const input =
-    document.getElementById("customAmount");
+  show("home");
+
+}
 
 
-  const amount =
-    Number(input.value);
+/* PAYMENT */
 
+function openPayment(amount){
+
+  currentAmount = amount;
+
+  currentOrder =
+    "DEMO-" + Date.now();
+
+  document.getElementById("amount")
+    .innerText =
+    "₹" + amount.toFixed(2);
+
+  document.getElementById("order")
+    .innerText =
+    currentOrder;
+
+  document.getElementById("customAmount")
+    .value =
+    amount;
+
+  show("payment");
+
+}
+
+
+/* MOCK UPI */
+
+function openMockUPI(){
+
+  let amount =
+    Number(
+      document.getElementById(
+        "customAmount"
+      ).value
+    );
 
   if(!amount || amount <= 0){
 
-    alert("Enter a valid demo amount.");
+    alert(
+      "Enter a valid demo amount."
+    );
 
     return;
 
   }
 
+  currentAmount = amount;
 
-  selectedAmount = amount;
+  document.getElementById(
+    "mockAmount"
+  ).value =
+    amount;
 
+  show("mockUPI");
 
-  const order =
-    document.getElementById("orderId").innerText;
-
-
-  hideAll();
-
-
-  document.getElementById("verifyPage").style.display =
-    "block";
+}
 
 
-  window.scrollTo(0,0);
+function showPayment(){
+
+  show("payment");
+
+}
 
 
-  /*
-    DEMO ONLY.
-    Random delay between 2 and 5 seconds.
-  */
+/* DEMO VERIFICATION */
 
-  const delay =
-    Math.floor(Math.random() * 3000) + 2000;
+function verifyDemo(){
 
-
-  setTimeout(function(){
-
-    showDemoSuccess(
-      amount,
-      order
+  let amount =
+    Number(
+      document.getElementById(
+        "mockAmount"
+      ).value
     );
 
-  },delay);
+  if(!amount || amount <= 0){
+
+    alert(
+      "Enter a valid demo amount."
+    );
+
+    return;
+
+  }
+
+  currentAmount = amount;
+
+  show("verify");
+
+
+  setTimeout(
+    function(){
+
+      showSuccess();
+
+    },
+    2500
+  );
 
 }
 
 
 /* SUCCESS */
 
-function showDemoSuccess(
-  amount,
-  order
-){
+function showSuccess(){
 
-  const txn =
+  let txn =
     "DEMO-TXN-" + Date.now();
 
-
-  const date =
+  let date =
     new Date().toLocaleString();
-
 
   document.getElementById(
     "successAmount"
   ).innerText =
-    "₹" + amount.toFixed(2);
-
+    "₹" + currentAmount.toFixed(2);
 
   document.getElementById(
     "successOrder"
   ).innerText =
-    order;
-
+    currentOrder;
 
   document.getElementById(
-    "txnId"
+    "txn"
   ).innerText =
     txn;
 
-
   document.getElementById(
-    "dateTime"
+    "date"
   ).innerText =
     date;
 
 
   saveHistory(
-    amount,
-    order,
+    currentAmount,
+    currentOrder,
     txn,
     date
   );
 
 
-  hideAll();
-
-
-  document.getElementById(
-    "successPage"
-  ).style.display =
-    "block";
-
-
-  window.scrollTo(0,0);
+  show("success");
 
 }
 
 
-/* SAVE HISTORY */
+/* HISTORY */
 
 function saveHistory(
   amount,
@@ -879,85 +1140,59 @@ function saveHistory(
   date
 ){
 
-  const history =
+  let list =
     JSON.parse(
       localStorage.getItem(
         "demoHistory"
       ) || "[]"
     );
 
-
-  history.unshift({
-
-    amount:amount,
-    order:order,
-    txn:txn,
-    date:date
-
+  list.unshift({
+    amount,
+    order,
+    txn,
+    date
   });
-
 
   localStorage.setItem(
     "demoHistory",
-    JSON.stringify(history)
+    JSON.stringify(list)
   );
 
 }
 
 
-/* HISTORY */
-
 function showHistory(){
 
-  hideAll();
-
-
-  const list =
-    document.getElementById(
-      "historyList"
-    );
-
-
-  const history =
+  let list =
     JSON.parse(
       localStorage.getItem(
         "demoHistory"
       ) || "[]"
     );
 
+  let html = "";
 
-  list.innerHTML = "";
+  if(list.length === 0){
 
-
-  if(history.length === 0){
-
-    list.innerHTML =
-      "<p style='margin-top:20px'>No demo payments yet.</p>";
+    html =
+      "<p style='color:#777'>No demo payments yet.</p>";
 
   }
 
   else{
 
-    history.forEach(
-      function(item){
+    list.forEach(item => {
 
-        const div =
-          document.createElement(
-            "div"
-          );
+      html += `
 
-
-        div.className =
-          "historyItem";
-
-
-        div.innerHTML = `
+        <div class="historyItem">
 
           <strong>
             DEMO PAYMENT
           </strong>
 
-          <br>
+          <br><br>
 
           Amount:
           ₹${Number(item.amount).toFixed(2)}
@@ -972,73 +1207,46 @@ function showHistory(){
           Transaction:
           ${item.txn}
 
-          <br>
+          <br><br>
 
           <small>
             ${item.date}
           </small>
 
-        `;
+        </div>
 
+      `;
 
-        list.appendChild(div);
-
-      }
-    );
+    });
 
   }
 
-
   document.getElementById(
-    "historyPage"
-  ).style.display =
-    "block";
+    "historyList"
+  ).innerHTML =
+    html;
 
-
-  window.scrollTo(0,0);
+  show("history");
 
 }
 
 
-/* HOME */
-
-function goHome(){
-
-  hideAll();
-
-
-  document.getElementById(
-    "homePage"
-  ).style.display =
-    "block";
-
-
-  window.scrollTo(0,0);
-
-}
-
-
-/* DOWNLOAD QR */
+/* QR DOWNLOAD */
 
 function downloadQR(){
 
   const link =
     document.createElement("a");
 
-
   link.href =
     "./qr.png";
-
 
   link.download =
     "demo-payment-qr.png";
 
-
   document.body.appendChild(link);
 
-
   link.click();
-
 
   document.body.removeChild(link);
 
@@ -1072,7 +1280,7 @@ async function shareQR(){
   else{
 
     alert(
-      "Sharing is not supported on this browser."
+      "Sharing is not supported."
     );
 
   }
@@ -1090,38 +1298,33 @@ if(
     "load",
     function(){
 
-      navigator.serviceWorker.register(
-        "./sw.js",
-        {
-          scope:"./"
-        }
-      )
+      navigator.serviceWorker
+        .register(
+          "./sw.js",
+          {
+            scope:"./"
+          }
+        )
+        .catch(
+          function(error){
 
-      .then(
-        function(){
+            console.log(
+              "SW error:",
+              error
+            );
 
-          console.log(
-            "Service Worker registered"
-          );
-
-        }
-      )
-
-      .catch(
-        function(error){
-
-          console.log(
-            "Service Worker error:",
-            error
-          );
-
-        }
-      );
+          }
+        );
 
     }
   );
 
 }
+
+
+/* INITIAL PAGE */
+
+goHome();
 
 </script>
 
