@@ -13,6 +13,8 @@ maximum-scale=1.0,user-scalable=no,viewport-fit=cover">
 <link rel="apple-touch-icon" href="./icon-192.png">
 
 <meta name="theme-color" content="#7b16db">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
 
 <style>
 *{
@@ -27,6 +29,7 @@ body{
   background:#f8f3f9;
   color:#321642;
   min-height:100vh;
+  min-height:100dvh;
 }
 
 button{
@@ -39,14 +42,13 @@ button{
   max-width:520px;
   margin:auto;
   min-height:100vh;
+  min-height:100dvh;
   background:#fff;
 }
 
 .hidden{
   display:none!important;
 }
-
-/* DEMO LABEL */
 
 .demo{
   background:#fff1f1;
@@ -57,8 +59,6 @@ button{
   font-size:12px;
   font-weight:bold;
 }
-
-/* HOME */
 
 .homeTop{
   padding:25px 18px 15px;
@@ -163,10 +163,9 @@ button{
   font-weight:bold;
 }
 
-/* PAYMENT QR */
-
 .screen{
   min-height:100vh;
+  min-height:100dvh;
   background:#fff7ff;
 }
 
@@ -263,8 +262,6 @@ button{
   font-size:18px;
 }
 
-/* MOCK UPI */
-
 .mockPay{
   padding:18px;
 }
@@ -324,8 +321,6 @@ button{
   font-size:16px;
 }
 
-/* VERIFY */
-
 .verify{
   text-align:center;
   padding:80px 25px;
@@ -350,8 +345,6 @@ button{
 .verify h2{
   margin-bottom:10px;
 }
-
-/* SUCCESS */
 
 .success{
   text-align:center;
@@ -414,8 +407,6 @@ button{
   font-weight:bold;
 }
 
-/* HISTORY */
-
 .history{
   padding:18px;
 }
@@ -476,7 +467,6 @@ button{
 <body>
 
 <!-- HOME -->
-
 <div id="home" class="page">
 
   <div class="demo">
@@ -494,7 +484,6 @@ button{
     </div>
 
   </div>
-
 
   <div class="quick">
 
@@ -520,7 +509,6 @@ button{
 
   </div>
 
-
   <div class="section">
 
     <h3>Demo Payment Plans</h3>
@@ -528,47 +516,36 @@ button{
     <div class="plans">
 
       <div class="plan">
-
         <h3>Normal Demo</h3>
-
         <div class="price">₹150</div>
 
         <button onclick="openPayment(150)">
           PAY
         </button>
-
       </div>
 
-
       <div class="plan">
-
         <h3>Sound Box Demo</h3>
-
         <div class="price">₹199</div>
 
         <button onclick="openPayment(199)">
           PAY
         </button>
-
       </div>
 
     </div>
 
   </div>
 
-
   <div class="section">
 
     <button
       class="done"
       onclick="showHistory()">
-
       PAYMENT HISTORY
-
     </button>
 
   </div>
-
 
   <div class="bottom">
 
@@ -599,8 +576,7 @@ button{
 </div>
 
 
-<!-- QR PAYMENT -->
-
+<!-- PAYMENT -->
 <div id="payment" class="page screen hidden">
 
   <div class="demo">
@@ -615,14 +591,11 @@ button{
 
   </div>
 
-
   <div class="paymentHead">
 
     <h2>Amount to pay</h2>
 
-    <div
-      class="amount"
-      id="amount">
+    <div class="amount" id="amount">
       ₹199.00
     </div>
 
@@ -633,7 +606,6 @@ button{
 
   </div>
 
-
   <div class="qrBox">
 
     <img
@@ -641,35 +613,26 @@ button{
       alt="Demo QR">
 
     <div class="qrText">
-
       Scan this QR with a UPI app
       <br>
       <b>DEMO ONLY — NO MONEY IS SENT</b>
-
     </div>
 
   </div>
-
 
   <div class="actions">
 
     <button
       class="primary"
       onclick="downloadQR()">
-
       ↓ Download QR
-
     </button>
 
-    <button
-      onclick="shareQR()">
-
+    <button onclick="shareQR()">
       ↗ Share QR
-
     </button>
 
   </div>
-
 
   <div class="amountInput">
 
@@ -677,10 +640,10 @@ button{
       id="customAmount"
       type="number"
       min="1"
+      step="1"
       placeholder="Enter demo amount">
 
   </div>
-
 
   <div class="mockPay">
 
@@ -695,13 +658,11 @@ button{
         </div>
 
         <div>
-
           <b>Demo Payment Receiver</b>
 
           <small>
             demo@upi
           </small>
-
         </div>
 
       </div>
@@ -721,11 +682,8 @@ button{
 </div>
 
 
-<!-- MOCK UPI SCREEN -->
-
-<div
-  id="mockUPI"
-  class="page screen hidden">
+<!-- DEMO UPI -->
+<div id="mockUPI" class="page screen hidden">
 
   <div class="demo">
     DEMO UPI SCREEN — NO REAL PAYMENT
@@ -739,7 +697,6 @@ button{
 
   </div>
 
-
   <div class="mockPay">
 
     <div class="mockCard">
@@ -751,17 +708,14 @@ button{
         </div>
 
         <div>
-
           <b>Demo Receiver</b>
 
           <small>
             demo@upi
           </small>
-
         </div>
 
       </div>
-
 
       <input
         id="mockAmount"
@@ -770,21 +724,14 @@ button{
         min="1"
         placeholder="₹199">
 
-
       <button
         class="demoButton"
         onclick="verifyDemo()">
-
         PROCEED WITH DEMO PAYMENT
-
       </button>
 
-
-      <div class="demo"
-           style="margin-top:18px">
-
+      <div class="demo" style="margin-top:18px">
         SIMULATION ONLY — NEVER ENTER YOUR UPI PIN
-
       </div>
 
     </div>
@@ -795,10 +742,7 @@ button{
 
 
 <!-- VERIFY -->
-
-<div
-  id="verify"
-  class="page screen hidden">
+<div id="verify" class="page screen hidden">
 
   <div class="demo">
     DEMO VERIFICATION
@@ -822,10 +766,7 @@ button{
 
 
 <!-- SUCCESS -->
-
-<div
-  id="success"
-  class="page screen hidden">
+<div id="success" class="page screen hidden">
 
   <div class="demo">
     DEMO RESULT — NOT A REAL TRANSACTION
@@ -845,54 +786,35 @@ button{
       Simulation completed
     </p>
 
-
     <div
       id="successAmount"
       class="successAmount">
       ₹199.00
     </div>
 
-
     <div class="details">
 
       <div class="detail">
-
         <span>Order ID</span>
-
-        <b id="successOrder">
-        </b>
-
+        <b id="successOrder"></b>
       </div>
 
-
       <div class="detail">
-
         <span>Demo Transaction</span>
-
-        <b id="txn">
-        </b>
-
+        <b id="txn"></b>
       </div>
 
-
       <div class="detail">
-
         <span>Date & Time</span>
-
-        <b id="date">
-        </b>
-
+        <b id="date"></b>
       </div>
 
     </div>
 
-
     <button
       class="done"
       onclick="goHome()">
-
       DONE
-
     </button>
 
   </div>
@@ -901,10 +823,7 @@ button{
 
 
 <!-- HISTORY -->
-
-<div
-  id="history"
-  class="page screen hidden">
+<div id="history" class="page screen hidden">
 
   <div class="demo">
     DEMO HISTORY — NO REAL TRANSACTIONS
@@ -918,15 +837,13 @@ button{
 
   </div>
 
-
   <div class="history">
 
     <h2>
       Demo Payment History
     </h2>
 
-    <div id="historyList">
-    </div>
+    <div id="historyList"></div>
 
   </div>
 
@@ -950,11 +867,13 @@ function hideAll(){
     "verify",
     "success",
     "history"
-  ].forEach(id => {
+  ].forEach(function(id){
 
-    document
-      .getElementById(id)
-      .classList.add("hidden");
+    const el = document.getElementById(id);
+
+    if(el){
+      el.classList.add("hidden");
+    }
 
   });
 
@@ -965,9 +884,11 @@ function show(id){
 
   hideAll();
 
-  document
-    .getElementById(id)
-    .classList.remove("hidden");
+  const el = document.getElementById(id);
+
+  if(el){
+    el.classList.remove("hidden");
+  }
 
   window.scrollTo(0,0);
 
@@ -977,9 +898,7 @@ function show(id){
 /* HOME */
 
 function goHome(){
-
   show("home");
-
 }
 
 
@@ -987,65 +906,51 @@ function goHome(){
 
 function openPayment(amount){
 
-  currentAmount = amount;
+  currentAmount = Number(amount);
 
   currentOrder =
     "DEMO-" + Date.now();
 
-  document.getElementById("amount")
-    .innerText =
-    "₹" + amount.toFixed(2);
+  document.getElementById("amount").innerText =
+    "₹" + currentAmount.toFixed(2);
 
-  document.getElementById("order")
-    .innerText =
+  document.getElementById("order").innerText =
     currentOrder;
 
-  document.getElementById("customAmount")
-    .value =
-    amount;
+  document.getElementById("customAmount").value =
+    currentAmount;
 
   show("payment");
-
 }
 
 
-/* MOCK UPI */
+/* DEMO UPI */
 
 function openMockUPI(){
 
-  let amount =
+  const value =
     Number(
-      document.getElementById(
-        "customAmount"
-      ).value
+      document.getElementById("customAmount").value
     );
 
-  if(!amount || amount <= 0){
+  if(!value || value <= 0){
 
-    alert(
-      "Enter a valid demo amount."
-    );
+    alert("Enter a valid demo amount.");
 
     return;
-
   }
 
-  currentAmount = amount;
+  currentAmount = value;
 
-  document.getElementById(
-    "mockAmount"
-  ).value =
-    amount;
+  document.getElementById("mockAmount").value =
+    value;
 
   show("mockUPI");
-
 }
 
 
 function showPayment(){
-
   show("payment");
-
 }
 
 
@@ -1053,70 +958,51 @@ function showPayment(){
 
 function verifyDemo(){
 
-  let amount =
+  const amount =
     Number(
-      document.getElementById(
-        "mockAmount"
-      ).value
+      document.getElementById("mockAmount").value
     );
 
   if(!amount || amount <= 0){
 
-    alert(
-      "Enter a valid demo amount."
-    );
+    alert("Enter a valid demo amount.");
 
     return;
-
   }
 
   currentAmount = amount;
 
   show("verify");
 
+  setTimeout(function(){
 
-  setTimeout(
-    function(){
+    showSuccess();
 
-      showSuccess();
-
-    },
-    2500
-  );
-
+  },2500);
 }
 
 
-/* SUCCESS */
+/* DEMO SUCCESS */
 
 function showSuccess(){
 
-  let txn =
+  const txn =
     "DEMO-TXN-" + Date.now();
 
-  let date =
+  const date =
     new Date().toLocaleString();
 
-  document.getElementById(
-    "successAmount"
-  ).innerText =
+  document.getElementById("successAmount").innerText =
     "₹" + currentAmount.toFixed(2);
 
-  document.getElementById(
-    "successOrder"
-  ).innerText =
+  document.getElementById("successOrder").innerText =
     currentOrder;
 
-  document.getElementById(
-    "txn"
-  ).innerText =
+  document.getElementById("txn").innerText =
     txn;
 
-  document.getElementById(
-    "date"
-  ).innerText =
+  document.getElementById("date").innerText =
     date;
-
 
   saveHistory(
     currentAmount,
@@ -1125,9 +1011,7 @@ function showSuccess(){
     date
   );
 
-
   show("success");
-
 }
 
 
@@ -1142,23 +1026,20 @@ function saveHistory(
 
   let list =
     JSON.parse(
-      localStorage.getItem(
-        "demoHistory"
-      ) || "[]"
+      localStorage.getItem("demoHistory") || "[]"
     );
 
   list.unshift({
-    amount,
-    order,
-    txn,
-    date
+    amount: Number(amount),
+    order: order,
+    txn: txn,
+    date: date
   });
 
   localStorage.setItem(
     "demoHistory",
     JSON.stringify(list)
   );
-
 }
 
 
@@ -1166,68 +1047,61 @@ function showHistory(){
 
   let list =
     JSON.parse(
-      localStorage.getItem(
-        "demoHistory"
-      ) || "[]"
+      localStorage.getItem("demoHistory") || "[]"
     );
 
-  let html = "";
+  const container =
+    document.getElementById("historyList");
+
+  container.innerHTML = "";
 
   if(list.length === 0){
 
-    html =
+    container.innerHTML =
       "<p style='color:#777'>No demo payments yet.</p>";
 
-  }
+  }else{
 
-  else{
+    list.forEach(function(item){
 
-    list.forEach(item => {
+      const div =
+        document.createElement("div");
 
-      html += `
+      div.className =
+        "historyItem";
 
-        <div class="historyItem">
-
-          <strong>
-            DEMO PAYMENT
-          </strong>
-
-          <br><br>
-
-          Amount:
-          ₹${Number(item.amount).toFixed(2)}
-
-          <br>
-
-          Order:
-          ${item.order}
-
-          <br>
-
-          Transaction:
-          ${item.txn}
-
-          <br><br>
-
-          <small>
-            ${item.date}
-          </small>
-
-        </div>
-
+      div.innerHTML = `
+        <strong>DEMO PAYMENT</strong>
+        <br><br>
+        Amount: ₹${Number(item.amount).toFixed(2)}
+        <br>
+        Order: ${escapeHTML(item.order)}
+        <br>
+        Transaction: ${escapeHTML(item.txn)}
+        <br><br>
+        <small>${escapeHTML(item.date)}</small>
       `;
+
+      container.appendChild(div);
 
     });
 
   }
 
-  document.getElementById(
-    "historyList"
-  ).innerHTML =
-    html;
-
   show("history");
+}
 
+
+/* BASIC HTML ESCAPE */
+
+function escapeHTML(value){
+
+  return String(value)
+    .replaceAll("&","&amp;")
+    .replaceAll("<","&lt;")
+    .replaceAll(">","&gt;")
+    .replaceAll('"',"&quot;")
+    .replaceAll("'","&#039;");
 }
 
 
@@ -1249,7 +1123,6 @@ function downloadQR(){
   link.click();
 
   document.body.removeChild(link);
-
 }
 
 
@@ -1262,71 +1135,56 @@ async function shareQR(){
     try{
 
       await navigator.share({
-
-        title:
-          "Demo Payment QR",
-
-        text:
-          "Demo payment QR — no real payment"
-
+        title:"Demo Payment QR",
+        text:"Demo payment QR — no real payment"
       });
 
-    }
+    }catch(error){}
 
-    catch(e){}
-
-  }
-
-  else{
+  }else{
 
     alert(
-      "Sharing is not supported."
+      "Sharing is not supported on this browser."
     );
 
   }
-
 }
 
 
 /* SERVICE WORKER */
 
-if(
-  "serviceWorker" in navigator
-){
+if("serviceWorker" in navigator){
 
-  window.addEventListener(
-    "load",
-    function(){
+  window.addEventListener("load",function(){
 
-      navigator.serviceWorker
-        .register(
-          "./sw.js",
-          {
-            scope:"./"
-          }
-        )
-        .catch(
-          function(error){
+    navigator.serviceWorker
+      .register("./sw.js",{scope:"./"})
+      .then(function(){
 
-            console.log(
-              "SW error:",
-              error
-            );
-
-          }
+        console.log(
+          "Service Worker registered"
         );
 
-    }
-  );
+      })
+      .catch(function(error){
+
+        console.log(
+          "Service Worker error:",
+          error
+        );
+
+      });
+
+  });
 
 }
 
 
-/* INITIAL PAGE */
+/* START */
 
 goHome();
 
 </script>
 
 </body>
-</html>
+  </html>
