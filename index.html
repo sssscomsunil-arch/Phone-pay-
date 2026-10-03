@@ -2,26 +2,45 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
-<title>Payment Demo Simulation</title>
+<meta name="viewport"
+      content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+
+<title>Fake Phone - Demo Simulation</title>
 
 <style>
-*{box-sizing:border-box}
+*{
+  box-sizing:border-box;
+  -webkit-tap-highlight-color:transparent;
+}
+
 body{
   margin:0;
   font-family:Arial,Helvetica,sans-serif;
   background:linear-gradient(135deg,#e99cf2,#f6cafa);
   color:#28105e;
 }
-button,input{font:inherit}
-button{cursor:pointer}
+
+button,input{
+  font:inherit;
+}
+
+button{
+  cursor:pointer;
+}
 
 .screen{
   min-height:100vh;
   padding:24px 18px 35px;
   display:none;
 }
-.screen.active{display:block}
+
+.screen.active{
+  display:block;
+}
+
+.center{
+  text-align:center;
+}
 
 .demo{
   display:inline-block;
@@ -30,20 +49,23 @@ button{cursor:pointer}
   font-weight:800;
   padding:9px 18px;
   border-radius:25px;
-  margin:0 auto 20px;
   font-size:13px;
+  margin-bottom:18px;
 }
-.center{text-align:center}
 
 h1{
   margin:10px 0;
   font-size:40px;
 }
+
 h2{
-  font-size:30px;
+  font-size:29px;
   margin:15px 0;
 }
-h3{margin:8px 0}
+
+h3{
+  margin:8px 0;
+}
 
 .card{
   background:#fff;
@@ -81,18 +103,21 @@ h3{margin:8px 0}
   grid-template-columns:1fr 1fr;
   gap:18px;
 }
+
 .product{
   background:#fff;
   border-radius:25px;
   overflow:hidden;
   box-shadow:0 7px 20px #76208d35;
 }
+
 .product-title{
   padding:25px 10px 18px;
   text-align:center;
-  font-size:21px;
+  font-size:20px;
   font-weight:800;
 }
+
 .price{
   background:linear-gradient(90deg,#8617dc,#bb20dd);
   color:white;
@@ -101,11 +126,13 @@ h3{margin:8px 0}
   font-weight:900;
   padding:14px 5px;
 }
+
 .features{
   padding:15px 16px;
   line-height:2;
-  font-size:15px;
+  font-size:14px;
 }
+
 .product .btn{
   width:85%;
   margin:5px 7.5% 22px;
@@ -115,34 +142,48 @@ h3{margin:8px 0}
   display:grid;
   grid-template-columns:1fr 1fr;
   gap:18px;
-  margin-top:65px;
+  margin-top:55px;
 }
 
 .payment-head{
   display:flex;
   justify-content:space-between;
   align-items:center;
-  gap:10px;
+  gap:12px;
 }
+
 .amount{
   font-size:34px;
   font-weight:900;
 }
-.qr{
-  margin:20px auto;
+
+.qr-demo{
   width:270px;
   height:270px;
+  margin:25px auto;
   border:3px solid #ddd;
   border-radius:20px;
+  background:
+    repeating-linear-gradient(
+      45deg,
+      #111 0px,
+      #111 5px,
+      #fff 5px,
+      #fff 10px
+    );
   display:flex;
   align-items:center;
   justify-content:center;
-  background:
-   repeating-linear-gradient(45deg,#111 0 5px,#fff 5px 10px);
-  color:white;
-  font-size:32px;
+}
+
+.qr-demo span{
+  background:#fff;
+  color:#5d1cc7;
+  padding:15px;
+  border-radius:15px;
   font-weight:900;
 }
+
 .input{
   width:100%;
   padding:16px;
@@ -152,6 +193,7 @@ h3{margin:8px 0}
   margin:6px 0 15px;
   color:#24105c;
 }
+
 .label{
   font-weight:700;
   display:block;
@@ -164,23 +206,27 @@ h3{margin:8px 0}
   margin:-24px -18px -35px;
   padding:20px 18px 30px;
 }
+
 .purple{
   background:linear-gradient(145deg,#4415d6,#701ce0);
   color:#fff;
   border-radius:30px;
   padding:24px;
 }
+
 .balance{
   font-size:36px;
   font-weight:900;
   margin:15px 0;
 }
+
 .quick{
   display:grid;
   grid-template-columns:repeat(4,1fr);
   gap:8px;
   margin:25px 0;
 }
+
 .quick button{
   border:0;
   background:#f0ebff;
@@ -189,9 +235,11 @@ h3{margin:8px 0}
   border-radius:18px;
   font-weight:700;
 }
+
 .section{
   margin-top:25px;
 }
+
 .history{
   background:#fff;
   border:1px solid #ddd;
@@ -199,9 +247,11 @@ h3{margin:8px 0}
   border-radius:18px;
   margin-top:10px;
 }
-.green{color:#09a65b;font-weight:800}
 
-.field-group{margin-bottom:8px}
+.green{
+  color:#09a65b;
+  font-weight:800;
+}
 
 .account{
   border:2px solid #ddd;
@@ -212,16 +262,19 @@ h3{margin:8px 0}
   align-items:center;
   gap:15px;
 }
+
 .account.selected{
   border-color:#681de0;
   background:#f4efff;
 }
+
 .radio{
   width:23px;
   height:23px;
   border:3px solid #ccc;
   border-radius:50%;
 }
+
 .selected .radio{
   border:7px solid #6820df;
 }
@@ -232,19 +285,24 @@ h3{margin:8px 0}
   gap:24px;
   margin:35px 0;
 }
+
 .dot{
   width:18px;
   height:18px;
   border-radius:50%;
   background:#ddd;
 }
-.dot.on{background:#6420df}
+
+.dot.on{
+  background:#6420df;
+}
 
 .keypad{
   display:grid;
   grid-template-columns:repeat(3,1fr);
   gap:12px;
 }
+
 .key{
   border:0;
   background:#f0ecff;
@@ -254,7 +312,11 @@ h3{margin:8px 0}
   font-size:25px;
   font-weight:800;
 }
-.key.pay{background:#6420df;color:#fff}
+
+.key.pay{
+  background:#6420df;
+  color:#fff;
+}
 
 .loading{
   width:180px;
@@ -264,19 +326,19 @@ h3{margin:8px 0}
   margin:100px auto 35px;
   animation:pulse 1s infinite alternate;
 }
+
 @keyframes pulse{
   from{transform:scale(.92)}
   to{transform:scale(1.05)}
 }
 
-.success{
+.result{
   background:#13c94d;
   color:#fff;
   margin:-24px -18px 20px;
-  padding:35px 22px;
+  padding:30px 22px;
   border-radius:0 0 30px 30px;
 }
-.success h2{color:#fff}
 
 .detail{
   display:flex;
@@ -285,67 +347,696 @@ h3{margin:8px 0}
   border-bottom:1px solid #eee;
   gap:15px;
 }
+
 .detail span:last-child{
   font-weight:800;
   text-align:right;
 }
 
+.notice{
+  background:#fff4bd;
+  color:#4d3c00;
+  padding:12px;
+  border-radius:14px;
+  font-size:13px;
+  margin:15px 0;
+}
+
 @media(max-width:600px){
-  .products{grid-template-columns:1fr 1fr}
-  h1{font-size:36px}
-  .quick{grid-template-columns:repeat(2,1fr)}
+  .products{
+    grid-template-columns:1fr 1fr;
+  }
+
+  h1{
+    font-size:36px;
+  }
+
+  .quick{
+    grid-template-columns:repeat(2,1fr);
+  }
+
+  .payment-head{
+    align-items:flex-start;
+  }
+
+  .amount{
+    font-size:28px;
+  }
 }
 </style>
 </head>
 
 <body>
 
-<!-- SCREEN 1 -->
+<!-- ================= SCREEN 1 ================= -->
+
 <section id="s1" class="screen active">
+
   <div class="center">
+    <div class="demo">DEMO / SIMULATION</div>
+
     <h1>Fake Phone</h1>
-    <div class="home-sub">Choose your option</div>
+
+    <div class="home-sub">
+      Choose your option
+    </div>
   </div>
 
   <div class="products">
 
     <div class="product">
+
       <div class="product-title">
-        NORMAL BUY<br>Phone pay
+        NORMAL BUY<br>
+        Phone pay
       </div>
-      <div class="price">₹150</div>
+
+      <div class="price">
+        ₹150
+      </div>
+
       <div class="features">
         1. Double Bank ✓<br>
         2. SMS Features ✓<br>
         3. Permanent History ✓<br>
         4. Sound Box ×
       </div>
-      <button class="btn" onclick="openPayment(150)">BUY NOW ›</button>
+
+      <button class="btn"
+              onclick="openPayment(150)">
+        BUY NOW ›
+      </button>
+
     </div>
 
+
     <div class="product">
+
       <div class="product-title">
-        SOUND BOX BUY<br>Phone pay
+        SOUND BOX BUY<br>
+        Phone pay
       </div>
-      <div class="price">₹299</div>
+
+      <div class="price">
+        ₹299
+      </div>
+
       <div class="features">
         1. Double Bank ✓<br>
         2. SMS Features ✓<br>
         3. Permanent History ✓<br>
         4. SOUND BOX ✓
       </div>
-      <button class="btn" onclick="openPayment(299)">BUY NOW ›</button>
+
+      <button class="btn"
+              onclick="openPayment(299)">
+        BUY NOW ›
+      </button>
+
     </div>
 
   </div>
 
+
   <div class="bottomBtns">
-    <button class="btn">VIDEO PROOF DEKHAO ›</button>
-    <button class="btn">FEEDBACKS ›</button>
+
+    <button class="btn">
+      VIDEO PROOF DEKHAO ›
+    </button>
+
+    <button class="btn">
+      FEEDBACKS ›
+    </button>
+
   </div>
+
 </section>
 
 
-<!-- SCREEN 2 -->
+<!-- ================= SCREEN 2 ================= -->
+
 <section id="s2" class="screen">
-  <button class="back" onclick="
+
+  <button class="back"
+          onclick="show(1)">
+    ← Back
+  </button>
+
+  <div class="card">
+
+    <div class="center">
+
+      <div class="demo">
+        DEMO PAYMENT • SIMULATION
+      </div>
+
+    </div>
+
+    <div class="payment-head">
+
+      <h2>
+        🛍️ YOUR PAYMENT
+      </h2>
+
+      <div>
+        <small>
+          Amount to pay
+        </small>
+
+        <div class="amount"
+             id="payAmount">
+          ₹299.00
+        </div>
+      </div>
+
+    </div>
+
+
+    <p>
+      Order ID:
+      <b id="orderId"></b>
+    </p>
+
+
+    <div class="qr-demo">
+      <span>DEMO QR</span>
+    </div>
+
+
+    <div class="notice">
+      This is a demonstration screen.
+      No real payment or UPI transaction is performed.
+    </div>
+
+
+    <button class="btn">
+      ↓ Download Demo QR
+    </button>
+
+    <button class="btn"
+            style="background:#fff;color:#48127a;border:2px solid #ddd">
+      ↗ Share Demo QR
+    </button>
+
+
+    <hr style="margin:30px 0">
+
+
+    <h3>
+      🔒 DEMO CODE
+    </h3>
+
+    <p>
+      Enter the demo code to unlock the simulated dashboard.
+    </p>
+
+
+    <input
+      id="unlockCode"
+      class="input"
+      placeholder="Enter demo code"
+      autocomplete="off"
+    >
+
+
+    <button class="btn"
+            onclick="unlockDemo()">
+      UNLOCK
+    </button>
+
+
+    <p id="codeError"
+       style="color:red;text-align:center">
+    </p>
+
+  </div>
+
+</section>
+
+
+<!-- ================= SCREEN 3 ================= -->
+
+<section id="s3" class="screen">
+
+  <div class="dashboard">
+
+    <div class="purple">
+
+      <div style="font-size:27px;font-weight:900">
+        💳 PayFast
+      </div>
+
+      <small>
+        DEMO / SIMULATION ONLY
+      </small>
+
+      <h3>
+        Total Balance
+      </h3>
+
+      <div class="balance">
+        ₹5,240.00
+      </div>
+
+      <button class="btn"
+              style="background:#fff;color:#4c18b8"
+              onclick="show(4)">
+        Start Now →
+      </button>
+
+    </div>
+
+
+    <div class="section">
+
+      <h2>
+        Money Transfers
+      </h2>
+
+      <div class="quick">
+
+        <button>
+          📱<br>
+          To Mobile<br>
+          Number
+        </button>
+
+        <button>
+          🏦<br>
+          To Bank &<br>
+          Self A/c
+        </button>
+
+        <button onclick="show(4)">
+          ↓<br>
+          Receive<br>
+          Money
+        </button>
+
+        <button>
+          ₹<br>
+          Check<br>
+          Balance
+        </button>
+
+      </div>
+
+    </div>
+
+
+    <div class="section">
+
+      <h2>
+        Recharge & Bills
+      </h2>
+
+      <div class="quick">
+
+        <button>
+          📱<br>
+          Mobile
+        </button>
+
+        <button>
+          📡<br>
+          DTH
+        </button>
+
+        <button>
+          ⚡<br>
+          Electricity
+        </button>
+
+        <button>
+          💧<br>
+          Water
+        </button>
+
+      </div>
+
+    </div>
+
+
+    <div class="section">
+
+      <h2>
+        Recent Transactions
+      </h2>
+
+      <div class="history">
+
+        Demo transaction
+
+        <br>
+
+        <span class="green">
+          DEMO • ₹500
+        </span>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- ================= SCREEN 4 ================= -->
+
+<section id="s4" class="screen">
+
+  <button class="back"
+          onclick="show(3)">
+    ← Back
+  </button>
+
+
+  <div class="center">
+
+    <div class="demo">
+      DEMO / SIMULATION
+    </div>
+
+  </div>
+
+
+  <div class="card">
+
+    <h2>
+      Send Money
+    </h2>
+
+
+    <label class="label">
+      Demo recipient
+    </label>
+
+    <input
+      id="recipient"
+      class="input"
+      value="Demo User"
+    >
+
+
+    <label class="label">
+      Demo UPI ID
+    </label>
+
+    <input
+      id="upi"
+      class="input"
+      value="demo@sim"
+    >
+
+
+    <label class="label">
+      Amount
+    </label>
+
+    <input
+      id="sendAmount"
+      class="input"
+      type="number"
+      value="500"
+      min="1"
+    >
+
+
+    <label class="label">
+      Message
+    </label>
+
+    <input
+      id="message"
+      class="input"
+      value="Demo payment"
+    >
+
+
+    <button class="btn"
+            onclick="continueSend()">
+      CONTINUE
+    </button>
+
+  </div>
+
+</section>
+
+
+<!-- ================= SCREEN 5 ================= -->
+
+<section id="s5" class="screen">
+
+  <button class="back"
+          onclick="show(4)">
+    ← Back
+  </button>
+
+
+  <div class="center">
+
+    <div class="demo">
+      DEMO PAYMENT
+    </div>
+
+    <h2>
+      Total payable
+    </h2>
+
+    <div class="amount"
+         id="bankAmount">
+      ₹500.00
+    </div>
+
+    <p>
+      Select a demo account
+    </p>
+
+  </div>
+
+
+  <div class="card">
+
+    <div id="acc1"
+         class="account selected"
+         onclick="selectAccount(1)">
+
+      <div class="radio"></div>
+
+      <div>
+        <b>
+          Savings Account
+        </b>
+        <br>
+        Demo Bank • XXXX 0513
+      </div>
+
+    </div>
+
+
+    <div id="acc2"
+         class="account"
+         onclick="selectAccount(2)">
+
+      <div class="radio"></div>
+
+      <div>
+        <b>
+          Secondary Account
+        </b>
+        <br>
+        Demo Bank • XXXX 7706
+      </div>
+
+    </div>
+
+
+    <button class="btn"
+            id="payBtn"
+            onclick="openPin()">
+      CONTINUE DEMO
+    </button>
+
+  </div>
+
+</section>
+
+
+<!-- ================= SCREEN 6 ================= -->
+
+<section id="s6" class="screen">
+
+  <button class="back"
+          onclick="show(5)">
+    ← Back
+  </button>
+
+
+  <div class="center">
+
+    <div class="demo">
+      DEMO / SIMULATION
+    </div>
+
+    <h2>
+      Enter Demo PIN
+    </h2>
+
+    <p>
+      This PIN is only for the local simulation.
+    </p>
+
+  </div>
+
+
+  <div class="pin-dots"
+       id="pinDots">
+
+    <div class="dot"></div>
+    <div class="dot"></div>
+    <div class="dot"></div>
+    <div class="dot"></div>
+
+  </div>
+
+
+  <div class="keypad">
+
+    <button class="key"
+            onclick="pin(1)">
+      1
+    </button>
+
+    <button class="key"
+            onclick="pin(2)">
+      2
+    </button>
+
+    <button class="key"
+            onclick="pin(3)">
+      3
+    </button>
+
+    <button class="key"
+            onclick="pin(4)">
+      4
+    </button>
+
+    <button class="key"
+            onclick="pin(5)">
+      5
+    </button>
+
+    <button class="key"
+            onclick="pin(6)">
+      6
+    </button>
+
+    <button class="key"
+            onclick="pin(7)">
+      7
+    </button>
+
+    <button class="key"
+            onclick="pin(8)">
+      8
+    </button>
+
+    <button class="key"
+            onclick="pin(9)">
+      9
+    </button>
+
+    <button class="key"
+            onclick="backspace()">
+      ⌫
+    </button>
+
+    <button class="key"
+            onclick="pin(0)">
+      0
+    </button>
+
+    <button class="key pay"
+            onclick="verifyPin()">
+      Continue
+    </button>
+
+  </div>
+
+
+  <p id="pinError"
+     style="color:red;text-align:center">
+  </p>
+
+</section>
+
+
+<!-- ================= SCREEN 7 ================= -->
+
+<section id="s7" class="screen">
+
+  <button class="back"
+          onclick="show(6)">
+    ← Back
+  </button>
+
+
+  <div class="center">
+
+    <div class="demo">
+      SIMULATION
+    </div>
+
+    <div class="loading"></div>
+
+    <h2>
+      Processing Demo
+    </h2>
+
+    <p>
+      Simulating transaction...
+    </p>
+
+  </div>
+
+</section>
+
+
+<!-- ================= SCREEN 8 ================= -->
+
+<section id="s8" class="screen">
+
+  <div class="result">
+
+    <div class="demo">
+      DEMO RESULT • SIMULATION ONLY
+    </div>
+
+    <h2>
+      ✓ Demo Completed
+    </h2>
+
+    <p id="dateTime"></p>
+
+  </div>
+
+
+  <div class="card">
+
+    <div class="detail">
+      <span>
+        Recipient
+      </span>
+
+      <span id="successRecipient">
+        Demo User
+      </span>
+    </div>
+
+
+    <div class="detail">
+      <span>
+        Demo UPI ID
+  </span>
