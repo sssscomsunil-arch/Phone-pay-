@@ -2,1155 +2,489 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport"
-content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
 
-<title>Demo Payment</title>
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0,
+      maximum-scale=1.0, user-scalable=no,
+      viewport-fit=cover">
+
+<title>Fake Phone</title>
+
+<!-- PWA -->
+<link rel="manifest" href="./manifest.json">
+
+<meta name="theme-color" content="#8c20dc">
+
+<!-- Android PWA -->
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-status-bar-style" content="black-translucent">
+
+<!-- iPhone/iPad PWA -->
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="Fake Phone">
+
+<link rel="apple-touch-icon" href="./icon-192.png">
 
 <style>
 *{
   box-sizing:border-box;
+  margin:0;
+  padding:0;
+  font-family:Arial,sans-serif;
   -webkit-tap-highlight-color:transparent;
 }
 
+html{
+  width:100%;
+  min-height:100%;
+}
+
 body{
-  margin:0;
-  font-family:Arial,Helvetica,sans-serif;
-  background:linear-gradient(145deg,#f7c8fa,#efd0ff);
-  color:#382052;
-}
-
-button{
-  border:0;
-  cursor:pointer;
-  font:inherit;
-}
-
-.page{
+  background:linear-gradient(135deg,#f7b6ff,#f5d7ff);
   min-height:100vh;
-  padding:24px 18px 90px;
+  min-height:100dvh;
+  color:#35105d;
+  overflow-x:hidden;
 }
 
-.demo-label{
-  display:inline-block;
-  background:#ffefb0;
-  color:#6d5000;
-  font-size:12px;
-  font-weight:bold;
-  padding:6px 10px;
-  border-radius:20px;
-  margin-bottom:12px;
-}
-
-/* START */
-
-#startPage h1{
+.header{
+  padding:25px 15px 15px;
   text-align:center;
-  font-size:46px;
-  margin:10px 0 4px;
-  color:white;
-  text-shadow:0 4px 5px #a34ac2;
 }
 
-.subtitle{
-  text-align:center;
-  font-size:23px;
-  margin-bottom:55px;
+.header h1{
+  color:#fff;
+  font-size:34px;
+  text-shadow:0 2px 5px #9b35c9;
+}
+
+.header p{
+  margin-top:5px;
+  color:#6e278f;
+}
+
+.container{
+  padding:15px;
+  max-width:650px;
+  margin:auto;
 }
 
 .cards{
   display:flex;
-  gap:22px;
-  width:100%;
+  gap:12px;
+  justify-content:center;
+  align-items:stretch;
 }
 
 .card{
   width:50%;
-  background:white;
-  border-radius:26px;
-  padding:22px 10px 18px;
-  box-shadow:0 8px 18px #b783c7;
-  overflow:hidden;
+  background:#fff;
+  border:1px solid #dba8eb;
+  border-radius:15px;
+  padding:13px 8px;
+  text-align:center;
+  box-shadow:0 5px 15px rgba(100,0,130,.15);
 }
 
-.card h2{
-  text-align:center;
-  font-size:21px;
-  margin:4px 0 20px;
+.card h3{
+  font-size:15px;
+  line-height:20px;
 }
 
 .price{
-  background:linear-gradient(90deg,#891de0,#b52be3);
+  background:linear-gradient(90deg,#7b16db,#b124e8);
   color:white;
-  font-size:31px;
+  font-size:25px;
   font-weight:bold;
-  font-style:italic;
-  text-align:center;
-  padding:15px 3px;
-  margin:0 -5px 25px;
+  margin:10px -8px;
+  padding:8px;
+  transform:skew(-8deg);
 }
 
 .features{
-  font-size:14px;
-  line-height:2;
-  min-height:125px;
+  text-align:left;
+  font-size:11px;
+  line-height:22px;
+  padding:5px;
 }
 
 .buy{
-  width:100%;
-  background:#9221da;
+  border:0;
+  background:#8b20db;
   color:white;
-  border-radius:30px;
-  padding:14px 4px;
-  font-size:17px;
+  padding:9px 17px;
+  border-radius:20px;
   font-weight:bold;
+  cursor:pointer;
 }
 
-.bottom-buttons{
+.buttons{
   display:flex;
-  gap:20px;
-  margin-top:70px;
-}
-
-.big-btn{
-  flex:1;
-  background:#9221da;
-  color:white;
-  padding:22px 8px;
-  border-radius:40px;
-  font-weight:bold;
-  font-size:16px;
-}
-
-/* COMMON */
-
-.topbar{
-  display:flex;
-  align-items:center;
   gap:12px;
-  font-size:23px;
-  margin-bottom:25px;
+  margin-top:35px;
+}
+
+.bigbtn{
+  flex:1;
+  border:0;
+  padding:14px 5px;
+  border-radius:25px;
+  background:#8d20dc;
+  color:white;
+  font-weight:bold;
+}
+
+#paymentPage{
+  display:none;
+}
+
+.paymentBox{
+  background:#fff7ff;
+  border-radius:18px;
+  padding:20px 15px;
+  box-shadow:0 5px 20px rgba(80,0,100,.15);
 }
 
 .back{
   background:none;
-  font-size:30px;
-  color:#4b2861;
+  border:0;
+  font-size:18px;
+  color:#602080;
+  margin-bottom:15px;
+  cursor:pointer;
 }
 
-.box{
-  background:#fff;
-  border-radius:25px;
-  padding:22px;
-  box-shadow:0 5px 15px #c59acf;
+.paymentTop{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
   margin-bottom:20px;
 }
 
-.amount-title{
-  text-align:center;
-  font-size:18px;
+.paymentTitle{
+  font-size:20px;
+  font-weight:bold;
 }
 
 .amount{
+  text-align:right;
+}
+
+.amount small{
+  display:block;
+  font-size:13px;
+}
+
+.amount strong{
+  font-size:27px;
+}
+
+.order{
+  font-size:13px;
+  color:#633b76;
+  margin:15px 0;
+  word-break:break-all;
+}
+
+.demo{
   text-align:center;
-  font-size:42px;
+  color:#8b20db;
+  font-size:12px;
   font-weight:bold;
-  color:#6920a5;
-  margin:7px 0 18px;
+  margin-bottom:8px;
 }
 
-.qr-area{
-  width:100%;
-  min-height:280px;
-  border:2px dashed #b6a3bc;
-  border-radius:20px;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  padding:15px;
-  background:#fff;
-}
-
-.qr-area img{
-  max-width:100%;
-  max-height:320px;
+.qr{
+  width:260px;
+  height:260px;
+  background:white;
+  border:1px solid #ddd;
+  border-radius:12px;
+  padding:10px;
+  display:block;
+  margin:10px auto 18px;
   object-fit:contain;
 }
 
-.qr-placeholder{
+.info{
   text-align:center;
+  font-size:15px;
+  line-height:24px;
+  color:#573568;
+}
+
+.actionBtns{
+  display:flex;
+  gap:10px;
+  margin:20px 0;
+}
+
+.actionBtns button{
+  flex:1;
+  padding:13px;
+  border-radius:10px;
+  border:1px solid #b9a3c1;
+  background:white;
+  font-size:15px;
+}
+
+.download{
+  background:#2463e8 !important;
+  color:white;
+  border:0 !important;
+}
+
+.or{
+  text-align:center;
+  margin:20px 0;
   color:#777;
 }
 
-.action-row{
-  display:flex;
-  gap:12px;
-  margin-top:18px;
+.payOption{
+  padding:18px 5px;
+  border-top:1px solid #ddd;
+  font-size:17px;
 }
 
-.action{
-  flex:1;
-  padding:15px 5px;
-  border-radius:15px;
-  font-weight:bold;
-}
-
-.primary{
-  background:#2867df;
-  color:white;
-}
-
-.secondary{
-  background:white;
-  border:2px solid #c5b7ca;
-  color:#382052;
-}
-
-.upi-option{
-  background:white;
-  border-radius:18px;
-  padding:18px;
-  margin-top:12px;
-  box-shadow:0 3px 10px #d2bdd7;
-  font-size:18px;
-}
-
-.upi-option small{
+.payOption span{
   display:block;
   color:#777;
-  margin-top:6px;
+  font-size:13px;
+  margin-top:5px;
 }
 
 .note{
   text-align:center;
-  color:#765d7f;
-  font-size:14px;
-  line-height:1.5;
-}
-
-/* VERIFY */
-
-.center-screen{
-  min-height:75vh;
-  display:flex;
-  flex-direction:column;
-  align-items:center;
-  justify-content:center;
-  text-align:center;
-}
-
-.spinner{
-  width:55px;
-  height:55px;
-  border:6px solid #ddd;
-  border-top-color:#9221da;
-  border-radius:50%;
-  animation:spin 1s linear infinite;
-}
-
-@keyframes spin{
-  to{transform:rotate(360deg)}
-}
-
-.verify-title{
-  font-size:24px;
-  font-weight:bold;
-  margin-top:25px;
-}
-
-.verify-sub{
-  color:#777;
-  margin-top:10px;
-}
-
-/* SUCCESS */
-
-.success-icon{
-  width:90px;
-  height:90px;
-  border-radius:50%;
-  background:#29c66d;
-  color:white;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  font-size:55px;
-  margin:auto;
-}
-
-.success{
-  text-align:center;
-}
-
-.success h1{
-  font-size:28px;
-}
-
-.success-amount{
-  font-size:38px;
-  font-weight:bold;
-  color:#6e1ca3;
-}
-
-.info{
-  text-align:left;
-  border-top:1px solid #ddd;
   margin-top:20px;
-}
-
-.info div{
-  display:flex;
-  justify-content:space-between;
-  padding:13px 0;
-  border-bottom:1px solid #eee;
-}
-
-.done{
-  width:100%;
-  background:#9221da;
-  color:white;
-  padding:17px;
-  border-radius:30px;
-  margin-top:22px;
-  font-weight:bold;
-}
-
-/* HOME */
-
-.home-title{
-  font-size:31px;
-  font-weight:bold;
-  margin:10px 0 20px;
-}
-
-.home-card{
-  background:#fff;
-  border-radius:25px;
-  padding:20px;
-  box-shadow:0 5px 15px #c59acf;
-  margin-bottom:18px;
-}
-
-.home-grid{
-  display:grid;
-  grid-template-columns:repeat(4,1fr);
-  gap:10px;
-}
-
-.home-item{
-  text-align:center;
-  font-size:13px;
-  padding:12px 3px;
-  border-radius:15px;
-  background:#faf5ff;
-}
-
-.home-icon{
-  width:48px;
-  height:48px;
-  margin:auto auto 7px;
-  border-radius:50%;
-  background:#9221da;
-  color:white;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  font-size:22px;
-}
-
-.myqr{
-  text-align:center;
-}
-
-.myqr img{
-  max-width:240px;
-  max-height:240px;
-  margin:15px auto;
-  display:block;
-}
-
-.upload-btn{
-  display:block;
-  background:#9221da;
-  color:white;
-  padding:14px;
-  border-radius:30px;
-  font-weight:bold;
-  margin-top:12px;
-}
-
-input[type=file]{
-  display:none;
-}
-
-/* HISTORY */
-
-.history-item{
-  background:white;
-  border-radius:18px;
-  padding:17px;
-  margin-bottom:12px;
-  box-shadow:0 3px 10px #d1bdd7;
-}
-
-.history-top{
-  display:flex;
-  justify-content:space-between;
-  font-weight:bold;
-}
-
-.demo-status{
-  color:#7b20af;
-  font-size:13px;
-  margin-top:7px;
-}
-
-.empty{
-  text-align:center;
+  font-size:11px;
   color:#777;
-  padding:30px 10px;
-}
-
-/* MOBILE */
-
-@media(max-width:430px){
-  .page{
-    padding-left:12px;
-    padding-right:12px;
-  }
-
-  #startPage h1{
-    font-size:40px;
-  }
-
-  .cards{
-    gap:12px;
-  }
-
-  .card{
-    padding:18px 7px;
-  }
-
-  .card h2{
-    font-size:18px;
-  }
-
-  .price{
-    font-size:27px;
-  }
-
-  .features{
-    font-size:13px;
-  }
-
-  .buy{
-    font-size:15px;
-  }
 }
 </style>
 </head>
 
 <body>
 
-<!-- START PAGE -->
-<section id="startPage" class="page">
+<div id="homePage">
 
-  <div style="text-align:center">
-    <span class="demo-label">DEMO PAYMENT SIMULATOR</span>
+  <div class="header">
+    <h1>Fake Phone</h1>
+    <p>Choose your option</p>
   </div>
 
-  <h1>Demo Phone</h1>
+  <div class="container">
 
-  <div class="subtitle">Choose your option</div>
+    <div class="cards">
 
-  <div class="cards">
+      <div class="card">
+        <h3>NORMAL BUY<br>Phone pay</h3>
 
-    <div class="card">
-      <h2>NORMAL BUY<br>Phone Pay</h2>
+        <div class="price">₹150</div>
 
-      <div class="price">₹150</div>
+        <div class="features">
+          1. Double Bank ✓<br>
+          2. SMS Features ✓<br>
+          3. Permanent History ✓<br>
+          4. Sound Box ✕
+        </div>
 
-      <div class="features">
-        1. Double Bank ✓<br>
-        2. SMS Features ✓<br>
-        3. Permanent History ✓<br>
-        4. Sound Box ✕
+        <button class="buy" onclick="openPayment(150)">
+          BUY NOW ›
+        </button>
       </div>
 
-      <button class="buy" onclick="selectPlan(150)">
-        BUY NOW ›
-      </button>
-    </div>
+      <div class="card">
+        <h3>SOUND BOX BUY<br>Phone pay</h3>
 
-    <div class="card">
-      <h2>SOUND BOX BUY<br>Phone Pay</h2>
+        <div class="price">₹299</div>
 
-      <div class="price">₹299</div>
+        <div class="features">
+          1. Double Bank ✓<br>
+          2. SMS Features ✓<br>
+          3. Permanent History ✓<br>
+          4. SOUND BOX ✓
+        </div>
 
-      <div class="features">
-        1. Double Bank ✓<br>
-        2. SMS Features ✓<br>
-        3. Permanent History ✓<br>
-        4. SOUND BOX ✓
+        <button class="buy" onclick="openPayment(299)">
+          BUY NOW ›
+        </button>
       </div>
 
-      <button class="buy" onclick="selectPlan(299)">
-        BUY NOW ›
-      </button>
+    </div>
+
+    <div class="buttons">
+      <button class="bigbtn">VIDEO PROOF DEKHAO ›</button>
+      <button class="bigbtn">FEEDBACKS ›</button>
     </div>
 
   </div>
-
-  <div class="bottom-buttons">
-    <button class="big-btn" onclick="showDemoProof()">
-      VIDEO PROOF DEKHAO ›
-    </button>
-
-    <button class="big-btn" onclick="showHistory()">
-      FEEDBACKS ›
-    </button>
-  </div>
-
-</section>
+</div>
 
 
-<!-- PAYMENT PAGE -->
-<section id="paymentPage" class="page" style="display:none">
+<div id="paymentPage">
 
-  <div class="topbar">
-    <button class="back" onclick="showStart()">←</button>
-    <span>Back</span>
-  </div>
+  <div class="container">
 
-  <span class="demo-label">DEMO — NO REAL MONEY</span>
+    <div class="paymentBox">
 
-  <div class="box">
-
-    <div class="amount-title">Amount to pay</div>
-
-    <div class="amount" id="payAmount">₹150.00</div>
-
-    <p>
-      <b>Order ID:</b>
-      <span id="orderId"></span>
-    </p>
-
-    <h3 style="text-align:center;color:#8422b6">
-      DEMO PAYMENT • YOUR QR
-    </h3>
-
-    <div class="qr-area">
-      <div class="qr-placeholder" id="paymentQrPlaceholder">
-        <div style="font-size:60px">▦</div>
-        Upload your demo QR below
-      </div>
-
-      <img id="paymentQr" style="display:none">
-    </div>
-
-    <div class="action-row">
-
-      <label class="action primary" style="text-align:center">
-        ↓ Upload QR
-        <input type="file"
-               accept="image/*"
-               onchange="uploadPaymentQR(event)">
-      </label>
-
-      <button class="action secondary"
-              onclick="shareDemoQR()">
-        ↗ Share QR
+      <button class="back" onclick="goBack()">
+        ← Back
       </button>
 
-    </div>
+      <div class="paymentTop">
 
-    <p class="note">
-      This is a demo simulator. No real money is sent.
-    </p>
+        <div class="paymentTitle">
+          🛍️ YOUR PAYMENT
+        </div>
 
-  </div>
+        <div class="amount">
+          <small>Amount to pay</small>
+          <strong id="amount">₹299.00</strong>
+        </div>
 
-  <div style="text-align:center;font-size:30px;color:#777">
-    OR
-  </div>
-
-  <div class="upi-option" onclick="startDemoPayment()">
-    📱 UPI App
-    <small>Demo payment flow</small>
-  </div>
-
-  <div class="upi-option" onclick="startDemoPayment()">
-    💳 Other UPI App
-    <small>Demo payment flow</small>
-  </div>
-
-</section>
-
-
-<!-- VERIFY PAGE -->
-<section id="verifyPage" class="page" style="display:none">
-
-  <div class="center-screen">
-
-    <span class="demo-label">DEMO MODE</span>
-
-    <div class="spinner"></div>
-
-    <div class="verify-title">
-      Verifying Demo Payment...
-    </div>
-
-    <div class="verify-sub">
-      Simulating payment verification
-    </div>
-
-    <div style="margin-top:15px;color:#888">
-      Order ID:
-      <span id="verifyOrder"></span>
-    </div>
-
-  </div>
-
-</section>
-
-
-<!-- SUCCESS PAGE -->
-<section id="successPage" class="page" style="display:none">
-
-  <div class="box success">
-
-    <span class="demo-label">DEMO — NO REAL MONEY</span>
-
-    <div class="success-icon">✓</div>
-
-    <h1>Demo Payment Successful!</h1>
-
-    <div class="success-amount" id="successAmount">
-      ₹150
-    </div>
-
-    <p>Demo transaction completed.</p>
-
-    <div class="info">
-
-      <div>
-        <span>Order ID</span>
-        <b id="successOrder"></b>
       </div>
 
-      <div>
-        <span>Demo Txn ID</span>
-        <b id="successTxn"></b>
+      <div class="order">
+        Order ID:
+        <span id="orderId"></span>
       </div>
 
-      <div>
-        <span>Date</span>
-        <b id="successDate"></b>
+      <div class="demo">
+        DEMO PAYMENT • YOUR PAYMENT QR
       </div>
 
-    </div>
+      <img
+        id="qrImage"
+        class="qr"
+        src="./qr.png"
+        alt="Your Payment QR">
 
-    <button class="done" onclick="showHome()">
-      DONE
-    </button>
-
-  </div>
-
-</section>
-
-
-<!-- HOME PAGE -->
-<section id="homePage" class="page" style="display:none">
-
-  <span class="demo-label">DEMO PHONE</span>
-
-  <div class="home-title">
-    Welcome to Demo Phone
-  </div>
-
-  <div class="home-card">
-
-    <h3>Money Transfer</h3>
-
-    <div class="home-grid">
-
-      <div class="home-item" onclick="demoAction()">
-        <div class="home-icon">☎</div>
-        To Mobile
+      <div class="info">
+        Scan this QR code with your UPI app
+        to make payment
       </div>
 
-      <div class="home-item" onclick="demoAction()">
-        <div class="home-icon">🏦</div>
-        To Bank
+      <div class="actionBtns">
+
+        <button class="download"
+                onclick="downloadQR()">
+          ↓ Download QR
+        </button>
+
+        <button onclick="shareQR()">
+          ↗ Share QR
+        </button>
+
       </div>
 
-      <div class="home-item" onclick="demoAction()">
-        <div class="home-icon">↓</div>
-        Receive
+      <div class="or">OR</div>
+
+      <div class="payOption">
+        📱 UPI App
+        <span>Open your UPI app to make payment</span>
       </div>
 
-      <div class="home-item" onclick="demoAction()">
-        <div class="home-icon">₹</div>
-        Balance
+      <div class="payOption">
+        💳 Other UPI App
+        <span>Use your preferred payment application</span>
+      </div>
+
+      <div class="note">
+        This is a demo payment interface.
       </div>
 
     </div>
 
   </div>
-
-
-  <div class="home-card">
-
-    <h3>Recharge & Bills</h3>
-
-    <div class="home-grid">
-
-      <div class="home-item">🔋<br>Recharge</div>
-      <div class="home-item">🚕<br>Travel</div>
-      <div class="home-item">💡<br>Electricity</div>
-      <div class="home-item">📱<br>Mobile</div>
-
-    </div>
-
-  </div>
-
-
-  <!-- MY QR -->
-
-  <div class="home-card myqr">
-
-    <h3>My QR</h3>
-
-    <p class="note">
-      Upload your own QR image for this demo.
-    </p>
-
-    <div id="myQrContainer">
-      <p class="empty">No QR uploaded</p>
-    </div>
-
-    <label class="upload-btn">
-      + Upload My QR
-      <input type="file"
-             accept="image/*"
-             onchange="uploadMyQR(event)">
-    </label>
-
-  </div>
-
-
-  <button class="done"
-          onclick="showHistory()">
-    PAYMENT HISTORY
-  </button>
-
-  <button class="done"
-          style="background:#555"
-          onclick="showStart()">
-    BACK TO PLANS
-  </button>
-
-</section>
-
-
-<!-- HISTORY PAGE -->
-<section id="historyPage" class="page" style="display:none">
-
-  <div class="topbar">
-    <button class="back" onclick="showHome()">←</button>
-    <span>Payment History</span>
-  </div>
-
-  <span class="demo-label">
-    DEMO HISTORY — NO REAL TRANSACTIONS
-  </span>
-
-  <div id="historyList"></div>
-
-  <button class="done"
-          style="background:#c52d45"
-          onclick="clearHistory()">
-    CLEAR DEMO HISTORY
-  </button>
-
-</section>
+</div>
 
 
 <script>
 
-let selectedAmount = 150;
-let currentOrder = "";
-let currentTxn = "";
+let selectedAmount = 299;
 
-
-/* PAGE CONTROL */
-
-function hideAll(){
-
-  document.querySelectorAll(
-    "#startPage,#paymentPage,#verifyPage,#successPage,#homePage,#historyPage"
-  ).forEach(x => x.style.display="none");
-
-}
-
-function showStart(){
-  hideAll();
-  document.getElementById("startPage").style.display="block";
-}
-
-function showHome(){
-  hideAll();
-  document.getElementById("homePage").style.display="block";
-  loadMyQR();
-}
-
-function showHistory(){
-  hideAll();
-  document.getElementById("historyPage").style.display="block";
-  loadHistory();
-}
-
-
-/* SELECT PLAN */
-
-function selectPlan(amount){
+function openPayment(amount){
 
   selectedAmount = amount;
 
-  currentOrder =
-    "DEMO-" +
-    Date.now();
-
-  document.getElementById("payAmount").innerText =
+  document.getElementById("amount").innerText =
     "₹" + amount.toFixed(2);
 
   document.getElementById("orderId").innerText =
-    currentOrder;
+    "DEMO-" + Date.now();
 
-  hideAll();
+  document.getElementById("homePage").style.display =
+    "none";
 
-  document.getElementById("paymentPage").style.display="block";
+  document.getElementById("paymentPage").style.display =
+    "block";
 
-  loadPaymentQR();
+  window.scrollTo(0,0);
 }
 
+function goBack(){
 
-/* UPLOAD PAYMENT QR */
+  document.getElementById("paymentPage").style.display =
+    "none";
 
-function uploadPaymentQR(event){
+  document.getElementById("homePage").style.display =
+    "block";
 
-  const file = event.target.files[0];
-
-  if(!file) return;
-
-  const reader = new FileReader();
-
-  reader.onload = function(e){
-
-    const img =
-      document.getElementById("paymentQr");
-
-    img.src = e.target.result;
-    img.style.display = "block";
-
-    document.getElementById(
-      "paymentQrPlaceholder"
-    ).style.display = "none";
-
-    localStorage.setItem(
-      "demoPaymentQR",
-      e.target.result
-    );
-
-  };
-
-  reader.readAsDataURL(file);
+  window.scrollTo(0,0);
 }
 
+function downloadQR(){
 
-function loadPaymentQR(){
+  const link = document.createElement("a");
 
-  const qr =
-    localStorage.getItem("demoPaymentQR");
+  link.href = "./qr.png";
+  link.download = "payment-qr.png";
 
-  if(qr){
+  document.body.appendChild(link);
+  link.click();
+  document.body.removeChild(link);
+}
 
-    const img =
-      document.getElementById("paymentQr");
+async function shareQR(){
 
-    img.src = qr;
-    img.style.display="block";
+  if(navigator.share){
 
-    document.getElementById(
-      "paymentQrPlaceholder"
-    ).style.display="none";
+    try{
+
+      await navigator.share({
+        title:"Payment QR",
+        text:"Payment QR"
+      });
+
+    }catch(e){}
+
+  }else{
+
+    alert("Sharing is not supported on this browser.");
 
   }
-
 }
 
 
-/* DEMO PAYMENT */
+/* SERVICE WORKER */
 
-function startDemoPayment(){
+if("serviceWorker" in navigator){
 
-  hideAll();
+  window.addEventListener("load",function(){
 
-  document.getElementById(
-    "verifyPage"
-  ).style.display="block";
-
-  document.getElementById(
-    "verifyOrder"
-  ).innerText=currentOrder;
-
-  /*
-    DEMO ONLY:
-    Random 2–5 second simulation.
-    This does NOT verify or send real money.
-  */
-
-  const delay =
-    Math.floor(Math.random()*3000)+2000;
-
-  setTimeout(showSuccess,delay);
-}
-
-
-/* SUCCESS */
-
-function showSuccess(){
-
-  currentTxn =
-    "DEMO-TXN-" +
-    Date.now();
-
-  const now =
-    new Date();
-
-  document.getElementById(
-    "successAmount"
-  ).innerText =
-    "₹" + selectedAmount;
-
-  document.getElementById(
-    "successOrder"
-  ).innerText =
-    currentOrder;
-
-  document.getElementById(
-    "successTxn"
-  ).innerText =
-    currentTxn;
-
-  document.getElementById(
-    "successDate"
-  ).innerText =
-    now.toLocaleString();
-
-  saveHistory();
-
-  hideAll();
-
-  document.getElementById(
-    "successPage"
-  ).style.display="block";
-}
-
-
-/* HISTORY */
-
-function saveHistory(){
-
-  const history =
-    JSON.parse(
-      localStorage.getItem("demoHistory") || "[]"
-    );
-
-  history.unshift({
-
-    amount:selectedAmount,
-
-    order:currentOrder,
-
-    txn:currentTxn,
-
-    date:new Date().toLocaleString(),
-
-    status:"DEMO SUCCESSFUL"
+    navigator.serviceWorker.register("./sw.js",{
+      scope:"./"
+    })
+    .then(function(){
+      console.log("Service Worker registered");
+    })
+    .catch(function(error){
+      console.log("Service Worker error:",error);
+    });
 
   });
 
-  localStorage.setItem(
-    "demoHistory",
-    JSON.stringify(history)
-  );
-
 }
-
-
-function loadHistory(){
-
-  const list =
-    document.getElementById("historyList");
-
-  const history =
-    JSON.parse(
-      localStorage.getItem("demoHistory") || "[]"
-    );
-
-  if(history.length===0){
-
-    list.innerHTML =
-      '<div class="empty">No demo payments yet.</div>';
-
-    return;
-  }
-
-  list.innerHTML =
-    history.map(item => `
-
-      <div class="history-item">
-
-        <div class="history-top">
-
-          <span>Demo Payment</span>
-
-          <span>₹${item.amount}</span>
-
-        </div>
-
-        <div>
-          ${item.date}
-        </div>
-
-        <div>
-          Order: ${item.order}
-        </div>
-
-        <div>
-          Txn: ${item.txn}
-        </div>
-
-        <div class="demo-status">
-          ${item.status} • NO REAL MONEY
-        </div>
-
-      </div>
-
-    `).join("");
-
-}
-
-
-function clearHistory(){
-
-  if(confirm("Clear all demo history?")){
-
-    localStorage.removeItem("demoHistory");
-
-    loadHistory();
-
-  }
-
-}
-
-
-/* MY QR */
-
-function uploadMyQR(event){
-
-  const file = event.target.files[0];
-
-  if(!file) return;
-
-  const reader = new FileReader();
-
-  reader.onload = function(e){
-
-    localStorage.setItem(
-      "myDemoQR",
-      e.target.result
-    );
-
-    loadMyQR();
-
-  };
-
-  reader.readAsDataURL(file);
-}
-
-
-function loadMyQR(){
-
-  const qr =
-    localStorage.getItem("myDemoQR");
-
-  const box =
-    document.getElementById("myQrContainer");
-
-  if(!qr){
-
-    box.innerHTML =
-      '<p class="empty">No QR uploaded</p>';
-
-    return;
-  }
-
-  box.innerHTML = `
-
-    <img src="${qr}" alt="My Demo QR">
-
-    <button
-      class="action secondary"
-      onclick="removeMyQR()">
-      Remove QR
-    </button>
-
-  `;
-
-}
-
-
-function removeMyQR(){
-
-  localStorage.removeItem("myDemoQR");
-
-  loadMyQR();
-
-}
-
-
-/* OTHER BUTTONS */
-
-function shareDemoQR(){
-
-  alert(
-    "Demo QR sharing is available only as a simulator feature."
-  );
-
-}
-
-function demoAction(){
-
-  alert(
-    "This feature is part of the demo simulator."
-  );
-
-}
-
-function showDemoProof(){
-
-  alert(
-    "Demo proof section — no real payment proof."
-  );
-
-}
-
-
-/* START */
-
-showStart();
 
 </script>
 
